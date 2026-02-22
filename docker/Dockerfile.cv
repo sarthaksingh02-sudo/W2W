@@ -1,0 +1,21 @@
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
+
+WORKDIR /app
+
+# Install system dependencies for OpenCV and builds
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY cv_engine/ /app/cv_engine/
+COPY .env /app/.env
+
+ENV PYTHONPATH=/app
+
+# This would run the orchestrator (to be implemented)
+CMD ["python", "-m", "cv_engine.orchestrator"]

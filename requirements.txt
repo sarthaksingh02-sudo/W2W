@@ -1,0 +1,24 @@
+# Core AI
+ultralytics==8.3.70
+insightface==0.7.3
+onnxruntime-gpu>=1.15.0  # Ensure compatibility with CUDA 11.8/12.x
+numpy>=1.24.0
+opencv-python-headless>=4.8.0 # or opus if GPU build is manually handled
+supervision>=0.16.0 # For ByteTrack utilities if needed, else custom
+
+# Backend
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+alembic>=1.13.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+requests>=2.31.0
+loguru>=0.7.0 # Better logging
+colorama # For windows terminal color support
+shapely>=2.0.0
